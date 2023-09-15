@@ -1,18 +1,19 @@
-import { getLeaguesUrl } from '../../configs/api.config';
+import {getLeaguesUrl, getLeagueUrl} from '../../configs/api.config';
 import { $axios } from '../../api'
+import {ILeagues, IMatches} from "../../shared/types/league.types";
 
 export const LeagueService = {
-    // async getMovies(searchTerm?: string) {
-    //     return $axios.get<IMovie[]>(getLeaguesUrl(``), {
-    //         params: searchTerm
-    //             ? {
-    //                 searchTerm,
-    //             }
-    //             : {},
-    //     })
-    // },
-    //
-    // async getById(_id: string) {
-    //     return $axios.get<IMovieEditInput>(getLeaguesUrl(`/${_id}`))
-    // },
+    async getAll(searchTerm?: string) {
+        return $axios.get<ILeagues>(getLeaguesUrl(``), {
+            params: searchTerm
+                ? {
+                    searchTerm,
+                }
+                : {},
+        })
+    },
+
+    async getById(id: string) {
+        return $axios.get<IMatches>(getLeagueUrl(id))
+    },
 }

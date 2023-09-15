@@ -1,17 +1,28 @@
+import { QueryClient, QueryClientProvider } from 'react-query'
 import Layout from "./components/Layout/Layout";
 import {Routes, Route} from 'react-router-dom'
-import NotFound from "./pages/NotFound";
+import NotFound from "./components/screens/NotFound";
 import { ConfigProvider } from "antd";
-import Leagues from "./pages/Leagues";
-import League from "./pages/League";
-import Teams from "./pages/Teams";
-import Team from "./pages/Team";
+import Leagues from "./components/screens/leagues/Leagues";
+import League from "./components/screens/league/League";
+import Teams from "./components/screens/Teams";
+import Team from "./components/screens/Team";
 import React, {FC} from 'react';
 import 'antd/dist/reset.css';
+import locale from 'antd/es/locale/ru_RU';
+
+const queryClient = new QueryClient({
+    defaultOptions: {
+        queries: {
+            refetchOnWindowFocus: false,
+        },
+    },
+})
 
 const App: FC = () => {
     return (
         <ConfigProvider
+            locale={locale}
             theme={{
                 token: {
                     colorBgLayout: '#12121a',
@@ -119,15 +130,17 @@ const App: FC = () => {
                 },
             }}
         >
-            <Routes>
-                <Route path="/" element={<Layout />}>
-                    <Route path="leagues" element={<Leagues />}/>
-                    <Route path="leagues/:id" element={<League />}/>
-                    <Route path="teams" element={<Teams />}/>
-                    <Route path="teams/:id" element={<Team />}/>
-                    <Route path="*" element={<NotFound />}/>
-                </Route>
-            </Routes>
+            <QueryClientProvider client={queryClient}>
+                <Routes>
+                    <Route path="/" element={<Layout />}>
+                        <Route path="leagues" element={<Leagues />}/>
+                        <Route path="leagues/:id" element={<League />}/>
+                        <Route path="teams" element={<Teams />}/>
+                        <Route path="teams/:id" element={<Team />}/>
+                        <Route path="*" element={<NotFound />}/>
+                    </Route>
+                </Routes>
+            </QueryClientProvider>
         </ConfigProvider>
     );
 };
