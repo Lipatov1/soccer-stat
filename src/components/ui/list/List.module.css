@@ -1,0 +1,10 @@
+.card {
+    text-align: center;
+}
+
+.logo {
+    height: 200px;
+    width: auto !important;
+    margin: 0 auto;
+    padding-top: 15px;
+}

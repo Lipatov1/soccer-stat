@@ -3,7 +3,7 @@ import {ITeam} from "./team.types";
 export interface IArea {
     id: number
     name: string
-    countryCode: string
+    countryCode: string | null
     ensignUrl: string | null
 }
 

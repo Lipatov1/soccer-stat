@@ -84,7 +84,15 @@ const LeagueTable: FC<ILeagueTable> = ({matches}) => {
     )
 
     return (
-        <Table columns={columns} dataSource={data} />
+        <Table
+            bordered={true}
+            columns={columns}
+            dataSource={data}
+            pagination={{
+                position: ['bottomCenter'],
+                showSizeChanger: false
+            }}
+        />
     );
 };
 

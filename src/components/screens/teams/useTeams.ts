@@ -1,25 +1,25 @@
-import { LeagueService } from '../../../services/league/league.service';
+import { TeamService } from '../../../services/team/team.service';
 import { useDebounce } from '../../../hooks/useDebounce';
 import { ChangeEvent, useMemo, useState } from 'react'
-import { ILeagueItem } from './leagues.interface';
+import { ITeamItem } from './teams.interface';
 import { useQuery } from 'react-query'
 // import { toastError } from '@/utils/api/withToastrErrorRedux'
 // import { toastr } from 'react-redux-toastr'
 
-export const useLeagues = () => {
+export const useTeams = () => {
     const [searchTerm, setSearchTerm] = useState('')
     const debouncedSearch = useDebounce(searchTerm, 500)
 
     const queryData = useQuery(
-        ['league list'],
-        () => LeagueService.getAll(),
+        ['teams list'],
+        () => TeamService.getAll(),
         {
             select: ({ data }) =>
-                data.competitions.map(
-                    (league): ILeagueItem => ({
-                        id: league.id,
-                        name: league.name,
-                        description: league.area.name,
+                data.teams.map(
+                    (team): ITeamItem => ({
+                        id: team.id,
+                        name: team.name,
+                        cover: team.crestUrl,
                     })
                 ),
             onError(error) {
