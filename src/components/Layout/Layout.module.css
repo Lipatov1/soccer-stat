@@ -4,6 +4,12 @@
 
 .header {
     background-color: #262631;
+    padding: 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
 }
 
 .logoImage {

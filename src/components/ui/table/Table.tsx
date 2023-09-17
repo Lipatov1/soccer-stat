@@ -32,6 +32,7 @@ const Table: FC<ITable> = ({ matches }) => {
         position: ['bottomCenter'],
         showSizeChanger: false,
       }}
+      scroll={{ x: true }}
     />
   )
 }

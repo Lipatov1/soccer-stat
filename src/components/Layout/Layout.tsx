@@ -9,11 +9,7 @@ const { Header, Content, Footer } = LayoutAntd
 const Layout = () => (
   <LayoutAntd className={styles.layout}>
     <Header className={styles.header}>
-      <div className="container flex-center">
-        <div className="flex-center">
-          <img className={styles.logoImage} src="/images/logo.png" alt="Logo" />
-          <span className={styles.logoText}>SoccerStat</span>
-        </div>
+      <div className="container">
         <Menu mode="horizontal" items={items} />
       </div>
     </Header>
