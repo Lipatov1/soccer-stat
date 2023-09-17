@@ -1,4 +1,4 @@
-import { getLeaguesUrl, getLeagueUrl } from '../../configs/api.config';
+import { getLeaguesUrl, getMatchesLeagueUrl } from '../../configs/api.config';
 import { ILeagues, IMatches } from '../../shared/types/league.types';
 import { $axios } from '../../api'
 
@@ -7,7 +7,14 @@ export const LeagueService = {
         return $axios.get<ILeagues>(getLeaguesUrl())
     },
 
-    async getById(id: string) {
-        return $axios.get<IMatches>(getLeagueUrl(id))
+    async getMatchesById(id: string,  dates?: string[]) {
+        return $axios.get<IMatches>(getMatchesLeagueUrl(id), {
+            params: dates
+                ? {
+                    dateFrom: dates[0],
+                    dateTo: dates[1]
+                }
+                : {}
+        })
     }
 }

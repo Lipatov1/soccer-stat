@@ -7,7 +7,7 @@ interface ISearchField {
 }
 
 const SearchField: FC<ISearchField> = ({ handleSearch, searchTerm }) => (
-    <Input.Search placeholder="Поиск..." value={searchTerm} onChange={handleSearch} style={{ maxWidth: 400 }} />
+    <Input.Search placeholder="Поиск..." value={searchTerm} onChange={handleSearch} style={{ maxWidth: 400, marginBottom: 20 }} />
 )
 
 export default SearchField

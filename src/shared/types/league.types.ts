@@ -1,4 +1,5 @@
-import {ITeam} from "./team.types";
+import { Status } from '../../const';
+import { ITeam } from './team.types';
 
 export interface IArea {
     id: number
@@ -60,7 +61,7 @@ export interface IMatch {
     id: number,
     season: Omit<ISeason, 'winner'>,
     utcDate: string,
-    status: string,
+    status: Status,
     matchday: number,
     stage: string,
     group: null,

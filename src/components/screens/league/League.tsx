@@ -1,41 +1,33 @@
-import {FC} from 'react';
-import {Breadcrumb, DatePicker} from "antd";
-import {Link, useParams} from "react-router-dom";
-import {useQuery} from "react-query";
-import {LeagueService} from "../../../services/league/league.service";
-import LeagueTable from "./LeagueTable";
-import {ILeagueItem} from "../leagues/leagues.interface";
+import Breadcrumb from '../../ui/breadcrumb/Breadcrumb';
+import Spinner from '../../ui/spinner/Spinner';
+import Table from '../../ui/table/Table';
+import { useLeague } from "./useLeague";
+import { DatePicker } from 'antd';
+import { FC } from 'react';
 
 const League: FC = () => {
-    const { id } = useParams()
-
     const {
+        handleDatePicker,
+        isLoading,
         data,
-        isSuccess,
-        isLoading
-    } = useQuery(
-        ['get league', id],
-        () => LeagueService.getById(`${id}`),
-        {
-            select: ({ data }) => data,
-            onError(error) {
-                // toastError(error, 'genre list')
-                console.info(error)
-            },
-        }
-    )
+        isFetching
+    } = useLeague()
+
+    if (isFetching) {
+        console.log(111)
+    }
+
+    if (isLoading) {
+        console.log(222)
+    }
+
 
     return (
-        <div>
-            <Breadcrumb style={{ margin: '16px 0' }}>
-                <Breadcrumb.Item>
-                    <Link to="/leagues">Лиги</Link>
-                </Breadcrumb.Item>
-                <Breadcrumb.Item>{data?.competition.name}</Breadcrumb.Item>
-            </Breadcrumb>
-            <DatePicker.RangePicker />
-            {data?.matches && <LeagueTable matches={data.matches} />}
-        </div>
+        <>
+            <Breadcrumb backLink='/leagues' backName='Лиги' currentName={data?.competition.name} />
+            <DatePicker.RangePicker onChange={handleDatePicker} style={{marginBottom: 20}} disabled={isLoading} />
+            {isLoading ? <Spinner /> : <Table matches={data?.matches}/>}
+        </>
     );
 };
 
