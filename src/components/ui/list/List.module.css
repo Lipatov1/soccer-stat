@@ -1,5 +1,10 @@
 .card {
     text-align: center;
+    min-height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .logo {

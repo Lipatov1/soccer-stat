@@ -2,6 +2,7 @@
     display: grid;
     place-items: center;
     color: #ffffff;
+    width: 100%;
     position: absolute;
     gap: 20px;
     top: 50%;
@@ -37,6 +38,6 @@
 }
 
 .link span:hover {
-     opacity: .7;
-     text-decoration: underline;
+    opacity: .7;
+    text-decoration: underline;
 }

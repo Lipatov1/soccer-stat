@@ -3,12 +3,17 @@ import Spinner from '../../ui/spinner/Spinner'
 import List from '../../ui/list/List'
 import { useTeams } from './useTeams'
 import { FC } from 'react'
+import Error from '../../ui/error/Error'
 
 const Teams: FC = () => {
-  const { isLoading, searchTerm, handleSearch, filteredData } = useTeams()
+  const { isLoading, searchTerm, handleSearch, filteredData, isError } = useTeams()
 
   if (isLoading) {
     return <Spinner />
+  }
+
+  if (isError) {
+    return <Error text="Ошибка загрузки данных :(" />
   }
 
   return (

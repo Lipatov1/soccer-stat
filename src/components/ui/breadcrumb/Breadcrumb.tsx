@@ -9,12 +9,17 @@ interface IBreadcrumb {
 }
 
 const Breadcrumb: FC<IBreadcrumb> = ({ backLink, backName, currentName }) => (
-  <BreadcrumbAntd style={{ marginBottom: 20 }}>
-    <BreadcrumbAntd.Item>
-      <Link to={backLink}>{backName}</Link>
-    </BreadcrumbAntd.Item>
-    <BreadcrumbAntd.Item>{currentName}</BreadcrumbAntd.Item>
-  </BreadcrumbAntd>
+  <BreadcrumbAntd
+    style={{ marginBottom: 20 }}
+    items={[
+      {
+        title: <Link to={backLink}>{backName}</Link>,
+      },
+      {
+        title: currentName,
+      },
+    ]}
+  />
 )
 
 export default Breadcrumb

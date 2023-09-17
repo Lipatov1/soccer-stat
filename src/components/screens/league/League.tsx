@@ -1,12 +1,17 @@
 import Breadcrumb from '../../ui/breadcrumb/Breadcrumb'
 import Spinner from '../../ui/spinner/Spinner'
+import Error from '../../ui/error/Error'
 import Table from '../../ui/table/Table'
 import { useLeague } from './useLeague'
 import { DatePicker } from 'antd'
 import { FC } from 'react'
 
 const League: FC = () => {
-  const { handleDatePicker, isLoading, data } = useLeague()
+  const { handleDatePicker, isLoading, data, isError } = useLeague()
+
+  if (isError) {
+    return <Error text="Ошибка загрузки данных :(" />
+  }
 
   return (
     <>

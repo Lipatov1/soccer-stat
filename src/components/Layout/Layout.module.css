@@ -6,6 +6,10 @@
     background-color: #262631;
 }
 
+.logoImage {
+    height: 28px;
+}
+
 .logoText {
     font-weight: bold;
     margin: auto 5px;
@@ -21,3 +25,6 @@
     background-color: #262631;
 }
 
+.footer a {
+    color: #9383ff;
+}

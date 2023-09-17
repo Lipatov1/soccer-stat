@@ -1,5 +1,5 @@
 import { Layout as LayoutAntd, Menu } from 'antd'
-import { Link, Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import styles from './Layout.module.css'
 import { items } from './menu.data'
 import cn from 'classnames'
@@ -10,20 +10,22 @@ const Layout = () => (
   <LayoutAntd className={styles.layout}>
     <Header className={styles.header}>
       <div className="container flex-center">
-        <Link to="/">
-          <div className="flex-center">
-            <img className={styles.logoImage} src="/images/logo.png" alt="Logo" height="28px" />
-            <span className={styles.logoText}>qwerty</span>
-          </div>
-        </Link>
-
+        <div className="flex-center">
+          <img className={styles.logoImage} src="/images/logo.png" alt="Logo" />
+          <span className={styles.logoText}>SoccerStat</span>
+        </div>
         <Menu mode="horizontal" items={items} />
       </div>
     </Header>
     <Content className={cn(styles.content, 'container')}>
       <Outlet />
     </Content>
-    <Footer className={styles.footer}>Ant Design ©2023 Created by Ant UED</Footer>
+    <Footer className={styles.footer}>
+      Soccer Stat ©2023 Created by{' '}
+      <a href="https://github.com/Lipatov1" target="_blank" rel="noreferrer">
+        Ilya
+      </a>
+    </Footer>
   </LayoutAntd>
 )
 

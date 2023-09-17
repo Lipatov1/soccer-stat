@@ -1,11 +1,11 @@
+import NotFound from './components/screens/not-found/NotFound'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Leagues from './components/screens/leagues/Leagues'
 import League from './components/screens/league/League'
-import NotFound from './components/screens/not-found/NotFound'
 import Teams from './components/screens/teams/Teams'
-import { Routes, Route } from 'react-router-dom'
-import Layout from './components/Layout/Layout'
 import Team from './components/screens/team/Team'
+import Layout from './components/Layout/Layout'
 import locale from 'antd/es/locale/ru_RU'
 import { ConfigProvider } from 'antd'
 import 'antd/dist/reset.css'
@@ -36,6 +36,7 @@ const App: FC = () => {
       <QueryClientProvider client={queryClient}>
         <Routes>
           <Route path="/" element={<Layout />}>
+            <Route index element={<Navigate to="leagues" />} />
             <Route path="leagues" element={<Leagues />} />
             <Route path="leagues/:id" element={<League />} />
             <Route path="teams" element={<Teams />} />
