@@ -11,7 +11,7 @@ export const extractTimeFromDateTime = (date: string) => {
   return new Date(date).toLocaleTimeString('ru', { hour: '2-digit', minute: '2-digit' })
 }
 
-export const getDatesFromDataPicker = (value: RangeValue<Dayjs>) => {
+export const getDatesFromDataPicker = (value: RangeValue<Dayjs> | undefined) => {
   const from = value?.[0]?.format('YYYY-MM-DD') ?? ''
   const to = value?.[1]?.format('YYYY-MM-DD') ?? ''
   return [from, to]

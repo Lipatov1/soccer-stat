@@ -9,26 +9,27 @@ declare type EventValue<DateType> = DateType | null
 declare type RangeValue<DateType> = [EventValue<DateType>, EventValue<DateType>] | null
 
 export const useLeague = () => {
-  const [dates, setDates] = useState<string[]>([])
+  const [dates, setDates] = useState<RangeValue<Dayjs>>()
   const { id } = useParams()
 
   const queryData = useQuery(
     ['get matches league', [id, dates]],
-    () => LeagueService.getMatchesById(`${id}`, dates),
+    () => LeagueService.getMatchesById(`${id}`, getDatesFromDataPicker(dates)),
     {
       select: ({ data }) => data,
     }
   )
 
   const handleDatePicker = (value: RangeValue<Dayjs>) => {
-    setDates(getDatesFromDataPicker(value))
+    setDates(value)
   }
 
   return useMemo(
     () => ({
       handleDatePicker,
       ...queryData,
+      dates,
     }),
-    [handleDatePicker, queryData]
+    [handleDatePicker, queryData, dates]
   )
 }

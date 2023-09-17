@@ -24,7 +24,7 @@ export const useTeams = () => {
   }
 
   const filteredData = queryData?.data?.filter((data) =>
-    data.name.toLowerCase().includes(debouncedSearch)
+    data.name.toLowerCase().includes(debouncedSearch.toLowerCase())
   )
 
   return useMemo(

@@ -7,21 +7,26 @@ import { DatePicker } from 'antd'
 import { FC } from 'react'
 
 const League: FC = () => {
-  const { handleDatePicker, isLoading, data, isError } = useLeague()
+  const { handleDatePicker, isLoading, data, isError, dates } = useLeague()
 
   if (isError) {
     return <Error text="Ошибка загрузки данных :(" />
+  }
+
+  if (isLoading) {
+    return <Spinner />
   }
 
   return (
     <>
       <Breadcrumb backLink="/leagues" backName="Лиги" currentName={data?.competition.name} />
       <DatePicker.RangePicker
+        value={dates}
         onChange={handleDatePicker}
         style={{ marginBottom: 20 }}
         disabled={isLoading}
       />
-      {isLoading ? <Spinner /> : <Table matches={data?.matches} />}
+      <Table matches={data?.matches} />
     </>
   )
 }
