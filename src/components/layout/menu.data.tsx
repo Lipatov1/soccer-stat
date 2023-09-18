@@ -7,7 +7,7 @@ export const items: MenuProps['items'] = [
   {
     label: (
       <div className={styles.logo}>
-        <img className={styles.logoImage} src="/images/logo.png" alt="Логотип SoccerStat" />
+        <img className={styles.logoImage} src="images/logo.png" alt="Логотип SoccerStat" />
         <span className={styles.logoText}>SoccerStat</span>
       </div>
     ),

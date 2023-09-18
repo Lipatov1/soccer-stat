@@ -2,7 +2,7 @@
   "name": "soccer-stat",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://lipatov1.github.io/soccer-stat/",
+  "homepage": "https://lipatov1.github.io/soccer-stat",
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
     "antd": "^5.9.0",
