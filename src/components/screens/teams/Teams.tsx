@@ -1,9 +1,9 @@
 import SearchField from '../../ui/search-field/SearchField'
 import Spinner from '../../ui/spinner/Spinner'
+import Error from '../../ui/error/Error'
 import List from '../../ui/list/List'
 import { useTeams } from './useTeams'
 import { FC } from 'react'
-import Error from '../../ui/error/Error'
 
 const Teams: FC = () => {
   const { isLoading, searchTerm, handleSearch, filteredData, isError } = useTeams()

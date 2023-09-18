@@ -1,7 +1,7 @@
 import { TeamService } from '../../../services/team/team.service'
 import { useDebounce } from '../../../hooks/useDebounce'
 import { ChangeEvent, useMemo, useState } from 'react'
-import { ITeamItem } from './teams.interface'
+import { ITeamItem } from './teams.types'
 import { useQuery } from 'react-query'
 
 export const useTeams = () => {

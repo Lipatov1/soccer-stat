@@ -1,5 +1,5 @@
-import { IDataSource } from './list.interface'
 import { Card, List as ListAntd } from 'antd'
+import { IDataSource } from './list.types'
 import { Link } from 'react-router-dom'
 import styles from './List.module.css'
 import { FC } from 'react'
@@ -38,10 +38,7 @@ const List: FC<IList> = ({ dataSource, pageSize = 15, link }) => (
               item.cover ? <img className={styles.logo} src={item.cover} alt={item.name} /> : false
             }
           >
-            <Card.Meta
-              title={item.name}
-              description={item.description ? item.description : false}
-            />
+            <Card.Meta title={item.name} description={item.description ?? false} />
           </Card>
         </Link>
       </ListAntd.Item>

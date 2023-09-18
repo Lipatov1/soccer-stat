@@ -1,7 +1,7 @@
 import { LeagueService } from '../../../services/league/league.service'
 import { useDebounce } from '../../../hooks/useDebounce'
 import { ChangeEvent, useMemo, useState } from 'react'
-import { ILeagueItem } from './leagues.interface'
+import { ILeagueItem } from './leagues.types'
 import { useQuery } from 'react-query'
 
 export const useLeagues = () => {

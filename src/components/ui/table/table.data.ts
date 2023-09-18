@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/named
-import { ColumnsType } from 'antd/es/table'
+import type { ColumnsType } from 'antd/es/table'
 import { DataType } from './table.types'
 
 export const columns: ColumnsType<DataType> = [
